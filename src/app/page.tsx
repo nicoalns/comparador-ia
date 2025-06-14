@@ -37,10 +37,11 @@ export default function LLMComparator() {
 			]);
 
 			setResponses({
-				"OpenAI GPT-4": openAIRes.response,
-				"Anthropic Claude 3": claudeRes.response,
-				"Google Gemini": geminiRes.response,
-			});
+	"OpenAI GPT-4": openAIRes.response || "❌ Error: " + JSON.stringify(openAIRes),
+	"Anthropic Claude 3": claudeRes.response || "❌ Error: " + JSON.stringify(claudeRes),
+	"Google Gemini": geminiRes.response || "❌ Error: " + JSON.stringify(geminiRes),
+});
+
 		} catch (error) {
 			console.error("Error comparando modelos:", error);
 		} finally {
