@@ -23,12 +23,6 @@ export default function LLMComparator() {
 					body: JSON.stringify({ prompt }),
 				}).then((res) => res.json()),
 
-				fetch("/api/claude", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ prompt }),
-				}).then((res) => res.json()),
-
 				fetch("/api/gemini", {
 					method: "POST",
 					headers: { "Content-Type": "application/json" },
@@ -37,8 +31,8 @@ export default function LLMComparator() {
 			]);
 
 			setResponses({
-				"OpenAI GPT-4": openAIRes.response || "❌ Error: " + JSON.stringify(openAIRes),
-				"Google Gemini": geminiRes.response || "❌ Error: " + JSON.stringify(geminiRes),
+				"OpenAI GPT": openAIRes.response,
+				"Google Gemini": geminiRes.response,
 			});
 		} catch (error) {
 			console.error("Error comparando modelos:", error);
